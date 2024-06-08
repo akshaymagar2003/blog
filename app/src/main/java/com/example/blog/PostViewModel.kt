@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.example.blog.models.Blog
 import kotlinx.coroutines.launch
 
-class PostViewModel(private val repository: PostRepository) : ViewModel() {
+class PostViewModel(private val repository: BlogRepository) : ViewModel() {
     private val _posts = MutableLiveData<List<Blog>>()
     val posts: LiveData<List<Blog>> get() = _posts
 
@@ -26,7 +26,7 @@ class PostViewModel(private val repository: PostRepository) : ViewModel() {
         }
     }
 }
-class PostViewModelFactory(private val repository: PostRepository) : ViewModelProvider.Factory {
+class PostViewModelFactory(private val repository: BlogRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PostViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

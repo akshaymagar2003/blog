@@ -14,19 +14,19 @@ import com.example.blog.models.Blog
 
 class MainActivity : AppCompatActivity() {
     private lateinit var postViewModel: PostViewModel
-    private lateinit var postAdapter: PostAdapter
+    private lateinit var blogAdapter: BlogAdapter
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        postAdapter = PostAdapter(::onItemClicked)
+        blogAdapter = BlogAdapter(::onItemClicked)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        binding.recyclerView.adapter = postAdapter
+        binding.recyclerView.adapter = blogAdapter
         try {
             val apiService = retrofit.create(ApiService::class.java)
-            val repository = PostRepository(apiService)
+            val repository = BlogRepository(apiService)
             val viewModelFactory = PostViewModelFactory(repository)
 
             postViewModel = ViewModelProvider(this, viewModelFactory).get(PostViewModel::class.java)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
 
         postViewModel.posts.observe(this, Observer { posts ->
-            postAdapter.updateOrderList(posts)
+            blogAdapter.updateOrderList(posts)
 
         })
 
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun onItemClicked(context: Context, item:Blog){
-        val intent = Intent(context, PostDetailActivity::class.java).apply {
+        val intent = Intent(context, BlogDetailActivity::class.java).apply {
                     putExtra("POST_URL", item.link)  // Assuming your Blog model has a `link` field
                 }
                 context.startActivity(intent)

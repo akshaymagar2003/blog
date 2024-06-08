@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.blog.models.Blog
 import kotlin.reflect.KFunction2
 
-//class PostAdapter : ListAdapter<Blog, PostAdapter.PostViewHolder>(DiffCallback()) {
+//class BlogAdapter : ListAdapter<Blog, BlogAdapter.PostViewHolder>(DiffCallback()) {
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
 //
 //        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
@@ -40,7 +40,7 @@ import kotlin.reflect.KFunction2
 //        override fun onClick(v: View?) {
 //            currentPost?.let { post ->
 //                val context = itemView.context
-//                val intent = Intent(context, PostDetailActivity::class.java).apply {
+//                val intent = Intent(context, BlogDetailActivity::class.java).apply {
 //                    putExtra("POST_URL", post.link)  // Assuming your Blog model has a `link` field
 //                }
 //                context.startActivity(intent)
@@ -56,7 +56,7 @@ import kotlin.reflect.KFunction2
 //        }
 //    }
 //}
-class PostAdapter(private val onItemClick: KFunction2<Context, Blog, Unit>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class BlogAdapter(private val onItemClick: KFunction2<Context, Blog, Unit>) : RecyclerView.Adapter<BlogAdapter.PostViewHolder>() {
 
     private val orderList = ArrayList<Blog>()
 
