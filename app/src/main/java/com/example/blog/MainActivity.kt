@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun onItemClicked(context: Context, item:Blog){
         val intent = Intent(context, BlogDetailActivity::class.java).apply {
-                    putExtra("POST_URL", item.link)  // Assuming your Blog model has a `link` field
+                    putExtra("POST_URL", item.link)
                 }
                 context.startActivity(intent)
     }
